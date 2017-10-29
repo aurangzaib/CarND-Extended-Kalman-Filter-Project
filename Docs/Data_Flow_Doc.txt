@@ -12,7 +12,7 @@ Example:
 R	8.60363	0.0290616	-2.99903	1477010443399637	8.6	0.25	-3.00029	0
 L	8.45	0.25	1477010443349642	8.45	0.25	-3.00027	0
 	
-2) The EKF Algorithm reads form file reads all the lines and generates measurement structures
+2) The EKF Algorithm reads all the lines from file and generates measurement structures
 3) The MeasurementProcessor() is called with individual measurements (one by one). The results are saved
 (Attention: no file processing routines are used inside MeasurementProcessor() all the file processing routines are in the main function
 So the data read/write is decoupled from the algorithm
