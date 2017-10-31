@@ -34,20 +34,8 @@ void KalmanFilter::Update(const VectorXd &z) {
   */
   // sensor measurement
   VectorXd y = z - (H_ * x_);
-  // measurement function
-  MatrixXd Ht = H_.transpose();
-  // sensor measurement error
-  MatrixXd S = H_ * P_ * Ht + R_;
-  MatrixXd Si = S.inverse();
-  // kalman filter gain
-  MatrixXd K = P_ * Ht * Si;
-  // new estimate
-  x_ = x_ + (K * y);
-  // identity matrix
-  long x_size = x_.size();
-  MatrixXd I = MatrixXd::Identity(x_size, x_size);
-  // new prediction covariance  matrix
-  P_ = (I - K * H_) * P_;
+  // implement kalman filter
+  KalmanFilter::KF(z);
 }
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
@@ -58,6 +46,11 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   // find the jacobian matrix
   Tools tools;
   H_ = tools.CalculateJacobian(x_);
+  // implement kalman filter
+  KalmanFilter::KF(z);
+};
+
+void KalmanFilter::KF(const VectorXd &z) {
   // sensor measurement
   VectorXd y = z - (H_ * x_);
   // measurement function
@@ -74,4 +67,4 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   MatrixXd I = MatrixXd::Identity(x_size, x_size);
   // new prediction covariance  matrix
   P_ = (I - K * H_) * P_;
-};
+}

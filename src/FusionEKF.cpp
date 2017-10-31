@@ -73,21 +73,21 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       Convert radar from polar to cartesian coordinates and initialize state.
       */
       auto rho = measurement_pack.raw_measurements_[0],
-          phi = measurement_pack.raw_measurements_[1],
-          rho_dot = measurement_pack.raw_measurements_[2];
+           phi = measurement_pack.raw_measurements_[1],
+           rho_dot = measurement_pack.raw_measurements_[2];
       // initialize state
-      ekf_.x_ << rho * cos(phi),
-                 rho * sin(phi),
-                 rho_dot * cos(phi),
-                 rho_dot * sin(phi);
+      ekf_.x_ << rho * cos(phi),      // px
+                 rho * sin(phi),      // py
+                 rho_dot * cos(phi),  // vx
+                 rho_dot * sin(phi);  // vy
     } else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       /**
       Initialize state.
       */
-      ekf_.x_ << measurement_pack.raw_measurements_[0],
-                 measurement_pack.raw_measurements_[1],
-                 0,
-                 0;
+      ekf_.x_ << measurement_pack.raw_measurements_[0], // px
+                 measurement_pack.raw_measurements_[1], // py
+                 0,                                     // vx
+                 0;                                     // vy
     }
 
     // done initializing, no need to predict or update
@@ -111,6 +111,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   const double noise_ax = 9.0, noise_ay = 9.0;
 
   //compute the time elapsed between the current and previous measurements
+  // difference of current and previous timestamps
   const double dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;    //dt - expressed in seconds
   previous_timestamp_ = measurement_pack.timestamp_;
 

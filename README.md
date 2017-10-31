@@ -124,3 +124,8 @@ still be compilable with cmake and make.
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+## Project Files Structure
+main.cpp communicates with telemetry fro lidar and radar data, sends this data to FusionEKF.cpp. It then evaluates Kalman Filter.
+fusionEKF.cpp initializes and updates Kalman variables (x,P,F & Q). It has an instance ekf._ of class KalmanFilter.
+KalmanFilter.cpp implements predict, update and updateEKF methods.
+tools.cpp implements CalculateJacobianMatrix and CalculateRMSE.
