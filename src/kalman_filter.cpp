@@ -8,8 +8,7 @@ KalmanFilter::KalmanFilter() {}
 
 KalmanFilter::~KalmanFilter() {}
 
-void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
-                        MatrixXd &H_in, MatrixXd &R_in, MatrixXd &Q_in) {
+void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in, MatrixXd &H_in, MatrixXd &R_in, MatrixXd &Q_in) {
   x_ = x_in;
   P_ = P_in;
   F_ = F_in;
@@ -27,22 +26,18 @@ void KalmanFilter::Predict() {
   P_ = F_ * P_ * Ft + Q_;
 }
 
+/**
+  * update the state by using Kalman Filter equations
+*/
 void KalmanFilter::Update(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Kalman Filter equations
-  */
-  // sensor measurement
-  VectorXd y = z - (H_ * x_);
   // implement kalman filter
   KalmanFilter::KF(z);
 }
 
+/**
+  * update the state by using Extended Kalman Filter equations
+*/
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
-  /**
-  TODO:
-    * update the state by using Extended Kalman Filter equations
-  */
   // find the jacobian matrix
   Tools tools;
   H_ = tools.CalculateJacobian(x_);
@@ -68,3 +63,4 @@ void KalmanFilter::KF(const VectorXd &z) {
   // new prediction covariance  matrix
   P_ = (I - K * H_) * P_;
 }
+s
