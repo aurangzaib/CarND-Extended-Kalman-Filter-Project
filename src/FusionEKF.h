@@ -44,6 +44,10 @@ private:
   Eigen::MatrixXd R_radar_;
   Eigen::MatrixXd H_laser_;
   Eigen::MatrixXd Hj_;
+
+  // flags for using radar and laser
+  bool use_radar_;
+  bool use_laser_;
 };
 
 #endif /* FusionEKF_H_ */
