@@ -1,11 +1,12 @@
 # Extended Kalman Filter Project
 
 
-| Note    | |
+| Notes    | |
 |:-----------|:-------------|
-| **Source Code**  | https://github.com/aurangzaib/CarND-Extended-Kalman-Filter-Project  |
-| **Car training data**  | data/obj_pose-laser-radar-synthetic-input.txt     |
-| **Not-car training data**  | https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip      |
+| **Source Code**  | [https://github.com/aurangzaib/CarND-Extended-Kalman-Filter-Project](https://github.com/aurangzaib/CarND-Extended-Kalman-Filter-Project)  |
+| **Overview**  | `readme.md`  |
+| **Setup**  | `setup.md`  |
+| **Measurement data**  | `data/obj_pose-laser-radar-synthetic-input.txt`     |
 | **How to run**  | `mkdir build && cd build` | 
 | |`cmake .. && make`     |
 | |`./ExtendedKF`     |
@@ -39,8 +40,8 @@ The data provided by Laser sensor is in following form:
 
 The data provided by Radar sensor is in following form:
 
-| tho | psi | rho_dot | gt_px | gt_px | gt_vx | gt_vy |
-|:-----------|:-------------|:-----------|:-------------|:-----------|:-------------|:-----------|
+| tho | psi | rho_dot | timestamp | gt_px | gt_px | gt_vx | gt_vy |
+|:-----------|:-------------|:-----------|:-------------|:-----------|:-------------|:-----------|:-----------|
 
 The data provided by server using Extended Kalman Filter is in following form:
 
@@ -53,7 +54,7 @@ The implementation of EKF is divided into 4 files:
 
 `main.cpp`
 
-`FusionEKF.cpp`
+`fusion_ekf.cpp `
 
 `kalman_filter.cpp`
 
@@ -65,10 +66,10 @@ Following table summarizes the purpose of each file:
 |:-----------|:-------------|
 |**main.cpp**| |
 |				| Get measurement data of Laser and Radar from simulator |
-| 				| Call ProcessMeasurement method of class FusionEKF | 
+| 				| Call `ProcessMeasurement` method of class `FusionEKF` | 
 |				| Get estimated position (px, py) and velocity (vx, vy) |
-|				| Call CalculateRMSE method of Tools class to get RMSE value|
-|**FusionEKF.cpp**|  |
+|				| Call `CalculateRMSE` method of class `Tools` to get RMSE value|
+|**fusion_ekf.cpp**|  |
 | 				| Initialize `x`, `P`, `R_laser`, `R_radar`, `H_laser`, `F` and `Q` | 
 |				| Call `Predict` of class `KalmanFilter`|
 |				| Call `UpdateRadar` and `UpdateLaser` of class `KalmanFilter`|
