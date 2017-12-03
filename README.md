@@ -83,3 +83,18 @@ Following table summarizes the purpose of each file:
 
 ## Results
 
+Following points sum up the results and conclusion for EKF:
+
+- EKF is able to handle linear as well as non-linear sensor measurements
+
+- Angle `rho` normlization is required in Update step in case of Radar measurements
+
+- EKF deals with non-linear measurements by linearizing them using Jacobian Matrix which is not an efficient way of handling non-linearities and losses accuracy in the process
+
+- Unscetned Kalman Filter (EKF) can be used to further reduce RMSE as it handles non-linear measurements using a better mathematical model without needing the linearization step
+
+- Update `x` and `P` for Radar
+
+The video below shows results of EKF:
+
+![result-ekf.gif](result-ekf.gif)
