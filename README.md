@@ -1,11 +1,11 @@
-# Extended Kalman Filter Project
+# Extended Kalman Filter (EKF) Project
 
 
-| Notes    | |
-|:-----------|:-------------|
 | **Source Code**  | [https://github.com/aurangzaib/CarND-Extended-Kalman-Filter-Project](https://github.com/aurangzaib/CarND-Extended-Kalman-Filter-Project)  |
-| **Overview**  | `readme.md`  |
-| **Setup**  | `setup.md`  |
+|:-----------|:-------------|
+| **Overview**  | `README.md`  |
+| **Setup**  | `SETUP.md`  |
+| **EKF Implementation**| `src/kalman_filter.cpp`|
 | **Measurement data**  | `data/obj_pose-laser-radar-synthetic-input.txt`     |
 | **How to run**  | `mkdir build && cd build` | 
 | |`cmake .. && make`     |
@@ -17,17 +17,17 @@ Extended Kalman Filter algorithm is used to predict is the position (px, py) and
 
 The accuracy of the prediction is calculated using RMSE method.
 
-The steps of the project are the following:
+The steps of the project are as following:
 
-- Read the sensors data and ground truth values from Laser and Radar.
+- Read the sensors data and ground truth values from Laser and Radar
 
-- Initialize Extended Kalman Filter.
+- Initialize Extended Kalman Filter
 
-- Predict State Vector (`x`) and State Covariance (`P`).
+- Predict State Vector (`x`) and State Covariance (`P`)
 
-- Update `x` and `P` for Laser.
+- Update `x` and `P` for Laser
 
-- Update `x` and `P` for Radar.
+- Update `x` and `P` for Radar
 
 - Calculate Root Mean Square Error (`RMSE`) to get the accuracy of estimation against the ground truth values.
 

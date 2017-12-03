@@ -57,6 +57,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   // predicted measurement
   VectorXd y = z - h;
 
+  // angle normalization
+  while (y(1) > M_PI)  y(1) -= 2. * M_PI;
+  while (y(1) < -M_PI) y(1) += 2. * M_PI;
+  
   // implement kalman filter
   KF(y);
 };

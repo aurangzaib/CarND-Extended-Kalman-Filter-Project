@@ -94,7 +94,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       auto px = measurement_pack.raw_measurements_[0],
            py = measurement_pack.raw_measurements_[1];
       // handling zero value case
-      if (px < EPS && py < EPS) {
+      if (fabs(px) < EPS && fabs(py) < EPS) {
         px = EPS;
         py = EPS;
       }
