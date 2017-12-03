@@ -1,4 +1,4 @@
-#include "FusionEKF.h"
+#include "fusion_ekf.h"
 #include "tools.h"
 #include "Eigen/Dense"
 #include <iostream>
@@ -176,6 +176,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     ekf_.Update(measurement_pack.raw_measurements_);
   }
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  cout << "x_ = \n" << ekf_.x_ << endl;
+  cout << "P_ = \n" << ekf_.P_ << endl;
 }
