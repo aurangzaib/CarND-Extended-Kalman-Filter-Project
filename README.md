@@ -95,6 +95,6 @@ Following points sum up the results and conclusion for EKF:
 
 - Update `x` and `P` for Radar
 
-The video below shows results of EKF:
+The video (GIF) below shows results of EKF:
 
 ![result-ekf.gif](result-ekf.gif)
